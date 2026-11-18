@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The World in One Page — Tuesday 17 November 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1024px; height: 1024px; }
+  body {
+    background: #f6f1e6;
+    color: #17130b;
+    font-family: "Noto Serif", "DejaVu Serif", Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { height: 1024px; padding: 14px 28px 10px; display: flex; flex-direction: column; overflow: hidden; }
+  .sans { font-family: "Noto Sans", "DejaVu Sans", Helvetica, Arial, sans-serif; }
+
+  /* ---------- masthead ---------- */
+  .kicker {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-top: 5px solid #17130b; border-bottom: 1px solid #17130b;
+    padding: 3px 0 3px; font-size: 10px; letter-spacing: 2.2px; font-weight: 700;
+    text-transform: uppercase;
+  }
+  .masthead { text-align: center; padding: 7px 0 3px; }
+  .masthead h1 {
+    font-family: "Noto Serif Display", "Noto Serif", "DejaVu Serif", serif;
+    font-weight: 900; font-size: 44px; letter-spacing: 0.5px; line-height: 1.02;
+  }
+  .masthead .tagline { font-style: italic; font-size: 12.5px; color: #4c463a; margin-top: 2px; }
+  .datebar {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-top: 2.5px solid #17130b; border-bottom: 1px solid #17130b;
+    padding: 4px 0 5px; margin-top: 5px;
+    font-size: 11.5px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase;
+  }
+  .datebar .mid { font-size: 13.5px; letter-spacing: 2.6px; }
+
+  /* ---------- shared story bits ---------- */
+  .eyebrow { font-size: 10px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; color: #8c1d18; margin-bottom: 3px; }
+  .num {
+    display: inline-block; min-width: 15px; height: 15px; line-height: 15px; text-align: center;
+    background: #17130b; color: #f6f1e6; font-family: "Noto Sans", sans-serif;
+    font-size: 9.5px; font-weight: 800; border-radius: 2px; padding: 0 2px;
+    vertical-align: 2px; margin-right: 4px;
+  }
+  .dateline { font-variant: small-caps; font-weight: 700; }
+
+  /* ---------- lead ---------- */
+  .lead { margin-top: 6px; }
+  #worldmap { display: block; }
+  .lead h2 { font-size: 26px; line-height: 1.07; font-weight: 900; letter-spacing: -0.2px; }
+  .lead .cols { column-count: 2; column-gap: 22px; margin-top: 5px; font-size: 12.1px; line-height: 1.32; text-align: justify; }
+  .lead .cols b { font-weight: 800; }
+
+  /* ---------- second row ---------- */
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 9px; padding-top: 8px; border-top: 1px solid #17130b; }
+  .duo h3 { font-size: 15.5px; line-height: 1.13; font-weight: 900; }
+  .duo p { font-size: 10.8px; line-height: 1.29; margin-top: 3px; text-align: justify; }
+
+  /* ---------- map band ---------- */
+  .mapband { display: grid; grid-template-columns: 648px 1fr; gap: 14px; margin-top: 9px; padding: 7px 0 6px; border-top: 2.5px solid #17130b; border-bottom: 1px solid #17130b; }
+  .mapband .cap { font-size: 9.5px; letter-spacing: 1.6px; font-weight: 800; text-transform: uppercase; margin-bottom: 2px; }
+  .mapidx { font-size: 10.2px; line-height: 1.38; }
+  .mapidx .cap { font-size: 9.5px; }
+  .mapidx b { font-family: "Noto Sans", sans-serif; font-size: 9.5px; background: #17130b; color: #f6f1e6; border-radius: 2px; padding: 0 3px; margin-right: 3px; }
+  .mapidx .note { font-style: italic; color: #4c463a; font-size: 10.3px; margin-top: 3px; line-height: 1.35; }
+
+  /* ---------- three columns ---------- */
+  .cols3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 17px; margin-top: 8px; flex: 1; }
+  .col h4 {
+    font-family: "Noto Sans", sans-serif; font-size: 10.5px; font-weight: 800;
+    letter-spacing: 1.6px; text-transform: uppercase;
+    border-bottom: 2.5px solid #17130b; padding-bottom: 3px; margin-bottom: 6px;
+  }
+  .story { margin-bottom: 4px; }
+  .story h5 { font-size: 12.2px; line-height: 1.16; font-weight: 800; display: inline; }
+  .story p { font-size: 10px; line-height: 1.18; margin-top: 1.5px; text-align: justify; color: #241f16; }
+  .story .src { color: #6d675a; font-size: 9.6px; font-style: italic; }
+
+  /* ---------- bottom strip ---------- */
+  .strip { border-top: 2.5px solid #17130b; margin-top: 7px; padding-top: 5px; }
+  .strip .row { display: flex; gap: 10px; font-size: 10.3px; line-height: 1.4; }
+  .strip .lab { font-family: "Noto Sans", sans-serif; font-size: 9.5px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; white-space: nowrap; padding-top: 1px; }
+  .footer { text-align: center; font-size: 9.3px; color: #6d675a; margin-top: 5px; letter-spacing: 0.4px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="kicker sans">
+    <span>One day &middot; One image &middot; Every continent</span>
+    <span>Est. 2026 &middot; Printed by algorithm, edited like a newspaper</span>
+    <span>Late edition</span>
+  </div>
+
+  <div class="masthead">
+    <h1>THE WORLD IN ONE PAGE</h1>
+    <div class="tagline">All the news of Tuesday, 17 November 2026 &mdash; twenty-four stories, six continents, a map, and not one pixel wasted</div>
+  </div>
+
+  <div class="datebar sans">
+    <span>Vol. I &mdash; No. 321</span>
+    <span class="mid">Tuesday, 17 November 2026</span>
+    <span>Price: one look</span>
+  </div>
+
+  <div class="lead">
+    <div class="eyebrow sans"><span class="num">1</span> Ukraine &middot; War &mdash; the day's lead</div>
+    <h2>Ukraine blows the Crimean Bridge apart again; Russia answers on Kyiv&rsquo;s river crossings</h2>
+    <div class="cols">
+      <p><span class="dateline">Kyiv &mdash;</span> Ukraine struck the Kerch Bridge linking Russia to occupied Crimea for the <b>second time in under 24 hours</b>, collapsing part of the roadway and closing the crossing, in what President Volodymyr Zelenskyy hailed as an &ldquo;unprecedented operation&rdquo;. Crimea&rsquo;s Moscow-installed chief said traffic was suspended.</p>
+      <p>Russia answered late on Monday with <b>ballistic missiles on Kyiv&rsquo;s North and South bridges</b> over the Dnipro, disrupting heating, water and power across the capital. Moscow claimed <b>1,441 Ukrainian drones</b> intercepted in a single night &mdash; a figure that could not be verified.</p>
+    </div>
+  </div>
+
+  <div class="duo">
+    <div>
+      <div class="eyebrow sans"><span class="num">2</span> Middle East &middot; Shipping</div>
+      <h3>Tankers hit mines near Hormuz as a third US carrier steams in</h3>
+      <p><span class="dateline">Strait of Hormuz &mdash;</span> Iran said several tankers struck mines, and one was set ablaze by a projectile off Oman; its crew was safe.</p>
+    </div>
+    <div>
+      <div class="eyebrow sans"><span class="num">3</span> Asia &middot; Diplomacy</div>
+      <h3>Three presidents, one table: Xi to host Trump and Putin</h3>
+      <p><span class="dateline">Shenzhen &mdash;</span> China confirmed Xi Jinping will host Donald Trump and Vladimir Putin on Thursday &mdash; the <b>first summit ever held among the three leaders</b> &mdash; beside this week&rsquo;s APEC summit.</p>
+    </div>
+  </div>
+
+  <div class="mapband">
+    <div>
+      <div class="cap sans">The day on the map &mdash; where Tuesday happened</div>
+      <svg id="worldmap" width="648" height="120" viewBox="0 0 648 120" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+    <div class="mapidx">
+      <div class="cap sans">Plotted stories</div>
+      <div><b>1</b>Crimea &amp; Kyiv <b>2</b>Strait of Hormuz<br>
+      <b>3</b>Shenzhen <b>4</b>Washington <b>5</b>Jerusalem<br>
+      <b>7</b>London <b>9</b>Tokyo <b>10</b>Geneva<br>
+      <b>11</b>Aden <b>12</b>Antalya <b>16</b>United States<br>
+      <b>22</b>Indian Wells <b>23</b>C&oacute;rdoba<br>
+      <b>24</b>Juba</div>
+      <div class="note">Every numbered story is plotted where it happened.</div>
+    </div>
+  </div>
+
+<script>
+// Dot-matrix world map, drawn at load: rows of land cells on an
+// equirectangular grid (64 columns x 24 rows), then numbered markers
+// at the story locations listed in the index beside the map.
+(function () {
+  // Land cells in 8-column chunks (64 columns x 24 rows, equirectangular).
+  var CHUNKS = [
+    ["........",".....###","#.......",".####...","........","####....","..######","........"],
+    ["..######","#...####","####....",".#####..",".###..##","########","########","##......"],
+    ["..######","##..####","########","..###.#.",".#######","########","########","###....."],
+    ["....###.","...#####","########","#......#",".#######","########","########","###....."],
+    ["........","...#####","########",".......#","########","########","########","####...."],
+    ["........","..######","#######.",".......#","########","########","#######.","........"],
+    ["........",".#######","######..",".......#","########","########","#######.","##......"],
+    ["........",".#######","######..","......##",".#.#####","#######.","######.#","##......"],
+    ["........",".#######","####....","....####","########","########",".#####..","........"],
+    ["........","..#####.","...#....","...#####","#####.##","##...###","..###...","........"],
+    ["........","...###..","........","...#####","######.#","##...##.",".###.##.","........"],
+    ["........","....###.","........","...#####","#######.",".....##.",".###.##.","........"],
+    ["........","........","..####..","...#####","######..","........","####....","........"],
+    ["........","........","..#####.","....####","##..###.","........","########","..####.."],
+    ["........","........","...#####","#.....##","######..","........",".#######",".#####.."],
+    ["........","........","..######","##....##","#####...","........","........","####...."],
+    ["........","........","...#####","###...##","########","........","......##","##......"],
+    ["........","........","....####","####.###","####.##.","........","....####","###....."],
+    ["........","........",".....###","###..###","####.#..","........","...#####","###....."],
+    ["........","........",".....###","#.....##","###.....","........","...#####","##......"],
+    ["........","........",".....###","......##","##......","........","....####","##....##"],
+    ["........","........","....###.","........","........","........",".......#","#.....##"],
+    ["........","........","....##..","........","........","........","........",".....##."],
+    ["........","........","....#...","........","........","........","........",".....#.."]
+  ];
+  var ROWS = CHUNKS.map(function (r) { return r.join(""); });
+  // marker: [story number, lon, lat]
+  var MARKERS = [
+    [1, 33, 50], [2, 56, 26], [3, 114, 22], [4, -77, 39], [5, 35, 32],
+    [7, -2, 52], [9, 140, 36], [10, 6, 46], [11, 45, 13], [12, 27, 38],
+    [16, -98, 40], [22, -116, 34], [23, -64, -31], [24, 31, 5]
+  ];
+  var W = 648, H = 120, svg = document.getElementById("worldmap");
+  var NS = "http://www.w3.org/2000/svg";
+  function X(lon) { return (lon + 180) / 360 * W; }
+  function Y(lat) { return (90 - lat) / 180 * H; }
+  for (var r = 0; r < ROWS.length; r++) {
+    for (var c = 0; c < ROWS[r].length; c++) {
+      if (ROWS[r].charAt(c) !== "#") continue;
+      var dot = document.createElementNS(NS, "circle");
+      dot.setAttribute("cx", (c + 0.5) * W / 64);
+      dot.setAttribute("cy", (r + 0.5) * H / 24);
+      dot.setAttribute("r", 2.3);
+      dot.setAttribute("fill", "#9a917c");
+      svg.appendChild(dot);
+    }
+  }
+  MARKERS.forEach(function (m) {
+    var g = document.createElementNS(NS, "g");
+    var ring = document.createElementNS(NS, "circle");
+    ring.setAttribute("cx", X(m[1])); ring.setAttribute("cy", Y(m[2]));
+    ring.setAttribute("r", 8.6); ring.setAttribute("fill", "#8c1d18");
+    ring.setAttribute("stroke", "#f6f1e6"); ring.setAttribute("stroke-width", "1.4");
+    var t = document.createElementNS(NS, "text");
+    t.setAttribute("x", X(m[1])); t.setAttribute("y", Y(m[2]) + 3.1);
+    t.setAttribute("text-anchor", "middle");
+    t.setAttribute("font-family", "Noto Sans, sans-serif");
+    t.setAttribute("font-size", "9.5"); t.setAttribute("font-weight", "800");
+    t.setAttribute("fill", "#f6f1e6");
+    t.textContent = m[0];
+    g.appendChild(ring); g.appendChild(t); svg.appendChild(g);
+  });
+})();
+</script>
+
+  <div class="cols3">
+    <div class="col">
+      <h4>World &amp; Politics</h4>
+      <div class="story">
+        <span class="num">4</span><h5>&lsquo;Dirty bomb&rsquo; plot claim shakes Washington</h5>
+        <p>US intelligence indicates Iran is developing plans to target senior Trump officials with a dirty bomb or chemical weapon in Washington, officials told CNN.</p>
+      </div>
+      <div class="story">
+        <span class="num">5</span><h5>Israel&rsquo;s election chief: the result stands</h5>
+        <p>Noam Sohlberg said October&rsquo;s deadlocked result &mdash; Netanyahu&rsquo;s bloc 53, the opposition 48, Arab-led parties a record 19 &mdash; will stand even if interference claims prove true. Eisenkot has until 6 December to form a government.</p>
+      </div>
+      <div class="story">
+        <span class="num">6</span><h5>Settlers kill a grandmother in Jericho</h5>
+        <p>Israeli settlers killed a 72-year-old Palestinian woman overnight in a part of Jericho where settlers recently seized Palestinian homes, officials and witnesses told Reuters.</p>
+      </div>
+      <div class="story">
+        <span class="num">7</span><h5>Britain sanctions settlement builders</h5>
+        <p>London sanctioned eight Israeli construction firms building in the occupied West Bank, and a group blocking Gaza aid, to protect the two-state solution.</p>
+      </div>
+      <div class="story">
+        <span class="num">8</span><h5>Four nations urge Israel: open Gaza&rsquo;s crossings</h5>
+        <p>Britain, Australia, Canada and Italy jointly urged rapid aid access through Gaza&rsquo;s crossings, calling conditions catastrophic.</p>
+      </div>
+    </div>
+
+    <div class="col">
+      <h4>Climate &middot; Science &middot; Health</h4>
+      <div class="story">
+        <span class="num">12</span><h5>COP31&rsquo;s first draft exposes deep splits</h5>
+        <p>The first draft deal at the Antalya climate talks &mdash; 18 pages, 144 paragraphs &mdash; lays bare the fault lines: fossil fuels, finance, the 1.5&deg;C limit.</p>
+      </div>
+      <div class="story">
+        <span class="num">13</span><h5>EU demands the &lsquo;strongest signal&rsquo; on clean energy</h5>
+        <p>EU climate chief Wopke Hoekstra said the talks must drive a shift from fossil fuels. The draft floats $120bn a year in finance; developing nations demand far more.</p>
+      </div>
+      <div class="story">
+        <span class="num">14</span><h5>Prevent the fire, protect the ocean</h5>
+        <p>Twenty-three countries endorsed a plan to prevent wildfires rather than fight them, drawing on Indigenous knowledge; ocean protection reached the table too.</p>
+      </div>
+      <div class="story">
+        <span class="num">10</span><h5>128 states weigh a ban on killer robots</h5>
+        <p>128 states opened talks in Geneva on a treaty to ban lethal autonomous weapons and require meaningful human control.</p>
+      </div>
+      <div class="story">
+        <span class="num">16</span><h5>America loses its measles-free status</h5>
+        <p>The US lost its measles elimination status after nearly three decades &mdash; Mexico and Bolivia lost theirs too &mdash; with cases at a 30-year high.</p>
+      </div>
+    </div>
+
+    <div class="col">
+      <h4>Money &middot; Culture &middot; Sport</h4>
+      <div class="story">
+        <span class="num">17</span><h5>Markets hold their breath for Nvidia</h5>
+        <p>Stocks fell, the dollar dipped ahead of Nvidia&rsquo;s earnings, and European shares slid.</p>
+      </div>
+      <div class="story">
+        <span class="num">18</span><h5>EU charges Temu over illegal sales</h5>
+        <p>Brussels charged the Chinese shopping giant with doing too little to stop illegal products sold in Europe.</p>
+      </div>
+      <div class="story">
+        <span class="num">19</span><h5>Pentagon fails its audit for a ninth year</h5>
+        <p>For a ninth straight year, auditors refused to sign off the Pentagon&rsquo;s books; 14 of 25 units passed.</p>
+      </div>
+      <div class="story">
+        <span class="num">20</span><h5>Depardieu bows to the verdict</h5>
+        <p>Depardieu, 77, dropped his appeal and accepted his conviction for sexually assaulting two women on a film set: &ldquo;I accept this.&rdquo;</p>
+      </div>
+      <div class="story">
+        <span class="num">21</span><h5>Alcaraz cruises in Turin</h5>
+        <p>Alcaraz swept Tiafoe 6&ndash;2 6&ndash;2 at the ATP Finals; Medvedev beat home hope Cobolli 7&ndash;6 6&ndash;3.</p>
+      </div>
+      <div class="story">
+        <span class="num">22</span><h5>Andreeva takes the WTA crown on debut</h5>
+        <p>Andreeva beat Svitolina 7&ndash;5 6&ndash;3 to win the WTA Finals on debut.</p>
+      </div>
+      <div class="story">
+        <span class="num">23</span><h5>Argentina run riot in C&oacute;rdoba</h5>
+        <p>Paz, &Aacute;lvarez and Mastantuono each scored twice as Argentina thrashed Costa Rica 7&ndash;0.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="row">
+      <span class="lab">In brief</span>
+      <span><span class="num">11</span><b>Aden &mdash;</b> Yemen&rsquo;s government fell back to defend Aden as Houthi forces advanced. &nbsp;&middot;&nbsp; <span class="num">9</span><b>Tokyo &mdash;</b> Japan scrambled fighter jets and protested &ldquo;strongly&rdquo; after two suspected Russian aircraft violated its airspace. &nbsp;&middot;&nbsp; <span class="num">24</span><b>Juba &mdash;</b> Senegal beat Sudan 4&ndash;2 to stay unbeaten in AFCON qualifying; Cameroon thrashed Namibia 3&ndash;0. &nbsp;&middot;&nbsp; <span class="num">15</span><b>Antalya &mdash;</b> A pledge to make AI more sustainable gathered 80 endorsements and 271 commitments.<b>NBA &mdash;</b> Giannis Antetokounmpo is named Eastern Conference Player of the Week.</span>
+    </div>
+  </div>
+
+  <div class="footer">Compiled 18 Nov 2026 from the previous day&rsquo;s reporting: Reuters &middot; AP &middot; AFP &middot; CNN &middot; BBC &middot; Al Jazeera &middot; Le Monde &middot; UN News &mdash; full source list in SOURCES.md, in this repository</div>
+
+</div>
+</body>
+</html>
