@@ -1,6 +1,12 @@
 # "The World in One Page" — a one-image summary of Tuesday 17 November 2026's
 # world news, built for make.fun's news-image-20261117 competition.
 #
+# Version 3: the page was rebuilt around the day itself — the date is the
+# headline, 46 numbered stories (15 illustrated cards drawn in code, a stat
+# strip of the day's biggest numbers, a full-size map with numbered pins,
+# 31 one-line briefs) and an explicit date-integrity check, so nothing from
+# before Tuesday is carried over unmarked.
+#
 # The picture itself lives in this repository as entry.png (a newspaper front
 # page drawn with frontpage.html and rendered by tools/render.py). This
 # program's whole job is to deliver those exact bytes to the grader: it copies
